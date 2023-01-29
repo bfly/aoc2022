@@ -27,7 +27,9 @@ def sum_badges(rucksacks: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day3/test.txt"
+    fn2 = "../data/day3/input.txt"
+    input_file = fn2
     with open(input_file, "r") as file:
         rucksacks = [line.strip() for line in file.readlines()]
 

@@ -61,12 +61,15 @@ def parse_input(lines: list[str], row_number: int) -> int:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    # fn = "../data/day15/test.txt"
+    fn = "../data/day15/input.txt"
+    sys.argv.append(fn)
+    input_file = sys.argv[1] if len(sys.argv) > 1 else fn
     with open(input_file, "r") as file:
         lines = [line.rstrip() for line in file.readlines()]
 
     tic = perf_counter()
-    row_number = 2000000 if len(sys.argv) > 1 else 10
+    row_number = 2_000_000 if len(sys.argv) > 1 else 10
     number_non_beacons = parse_input(lines, row_number)
 
     toc = perf_counter()

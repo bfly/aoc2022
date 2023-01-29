@@ -58,7 +58,10 @@ def get_index_sum(isgnals: list[list[Signal]]) -> int:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day13/test.txt"
+    fn2 = "../data/day13/input.txt"
+    input_file = fn2
+
     with open(input_file, "r") as file:
         lines = [chunk.rstrip().split("\n") for chunk in file.read().split("\n\n")]
 

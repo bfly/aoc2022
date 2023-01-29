@@ -52,7 +52,9 @@ def get_visited(directions: list[list[str]]) -> tuple[int, int]:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day9/test.txt"
+    fn2 = "../data/day9/input.txt"
+    input_file = fn2
     with open(input_file, "r") as file:
         directions = [line.rstrip().split(" ") for line in file.readlines()]
 

@@ -20,7 +20,9 @@ def get_indices(signal: str) -> tuple[int, int]:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day6/test.txt"
+    fn2 = "../data/day6/input.txt"
+    input_file = fn2
     with open(input_file, "r") as file:
         signal = file.read()
 

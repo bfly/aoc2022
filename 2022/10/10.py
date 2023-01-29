@@ -49,7 +49,9 @@ def parse_signals(instructions: list[list[str]]) -> tuple[int, list[list[str]]]:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day10/test.txt"
+    fn2 = "../data/day10/input.txt"
+    input_file = fn1
     with open(input_file, "r") as file:
         instructions = [line.rstrip().split(" ") for line in file.readlines()]
 

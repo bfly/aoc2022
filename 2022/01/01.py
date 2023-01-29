@@ -23,7 +23,9 @@ def get_top_calories(lines: list[str]) -> tuple[int, int]:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day1/test.txt"
+    fn2 = "../data/day1/input.txt"
+    input_file = fn2
     tic = perf_counter()
     with open(input_file, "r") as file:
         lines = file.readlines()

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
 from time import perf_counter
 
 
@@ -13,48 +12,54 @@ def encrypt(numbers: list[Digit], cipher: list[Digit] | None = None) -> list[Dig
     if cipher is None:
         cipher = numbers.copy()
 
-    l = len(numbers)
     for digit in numbers:
         val = digit[0]
         idx = cipher.index(digit)
         del cipher[idx]
 
-        new_idx = (idx + val) % (l - 1)
+        new_idx = (idx + val) % (len(numbers) - 1)
         cipher.insert(new_idx, digit)
 
     return cipher
 
 
 def get_coords(numbers: list[Digit]) -> tuple[int, int, int]:
-    l = len(numbers)
     numbers_raw = [digit[0] for digit in numbers]
     idx_0 = numbers_raw.index(0)
     return (
-        numbers_raw[(idx_0 + 1000) % l],
-        numbers_raw[(idx_0 + 2000) % l],
-        numbers_raw[(idx_0 + 3000) % l],
+        numbers_raw[(idx_0 + 1000) % len(numbers)],
+        numbers_raw[(idx_0 + 2000) % len(numbers)],
+        numbers_raw[(idx_0 + 3000) % len(numbers)],
     )
 
 
-if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+def proc(input_file: str) -> tuple[int, int]:
     with open(input_file, "r") as file:
         numbers_int = [int(num) for num in file.readlines()]
 
-    tic = perf_counter()
     numbers = [(val, i) for i, val in enumerate(numbers_int)]
     encrypted = encrypt(numbers)
     coords = get_coords(encrypted)
     part_a = sum(coords)
-
     numbers = [(DECRYPTION_KEY * val, i) for i, val in enumerate(numbers_int)]
     encrypted: list[Digit] | None = None
     for i in range(10):
         encrypted = encrypt(numbers, encrypted)
     coords = get_coords(encrypted)
     part_b = sum(coords)
+    return part_a, part_b
+
+
+if __name__ == "__main__":
+    fn1 = "../data/day20/test.txt"
+    fn2 = "../data/day20/input.txt"
+
+    tic = perf_counter()
+
+    part_1a, part_1b = proc(fn1)
+    part_2a, part_2b = proc(fn2)
 
     toc = perf_counter()
     time_us = round((toc - tic), 1)
 
-    print(f"{part_a=}, {part_b=} ({time_us}s)")
+    print(f"{part_1a=}, {part_1b=}, {part_2a=}, {part_2b=} ({time_us}s)")

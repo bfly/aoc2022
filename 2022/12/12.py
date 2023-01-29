@@ -89,7 +89,9 @@ def find_path(terrain: list[list[int]], start: Point, end: Point | None) -> floa
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day12/test.txt"
+    fn2 = "../data/day12/input.txt"
+    input_file = fn2
     with open(input_file, "r") as file:
         lines = [list(line.rstrip()) for line in file.readlines()]
 

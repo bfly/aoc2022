@@ -97,7 +97,9 @@ class Grid:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    fn1 = "../data/day24/test.txt"
+    fn2 = "../data/day24/input.txt"
+    input_file = fn2
     with open(input_file, "r") as file:
         lines = [line.rstrip() for line in file.readlines()]
 

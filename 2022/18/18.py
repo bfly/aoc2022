@@ -2,7 +2,6 @@
 
 
 from collections import deque
-import sys
 from time import perf_counter
 
 Point = tuple[int, ...]
@@ -75,15 +74,20 @@ def parse_input(lines: list[str]) -> tuple[int, int]:
     return surface_area_a, surface_area_b
 
 
-if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
-    with open(input_file, "r") as file:
+def proc(fn: str):
+    with open(fn, "r") as file:
         lines = [line.rstrip() for line in file.readlines()]
+    return parse_input(lines)
+
+
+if __name__ == "__main__":
+    fn1 = "../data/day18/test.txt"
+    fn2 = "../data/day18/input.txt"
 
     tic = perf_counter()
-    surface_area = parse_input(lines)
-
+    surface1, surface3 = proc(fn1)
+    surface2, surface4 = proc(fn2)
     toc = perf_counter()
     time_us = round((toc - tic) * 1000)
 
-    print(f"{surface_area=} ({time_us}ms)")
+    print(f"{surface1=} {surface2=} {surface3=} {surface4=} ({time_us}ms)")

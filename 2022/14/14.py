@@ -136,7 +136,9 @@ def parse_input(lines: list[str]) -> tuple[list[list[Point]], int, int]:
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else "./test.txt"
+    # fn = "../data/day14/test.txt"
+    fn = "../data/day14/input.txt"
+    input_file = sys.argv[1] if len(sys.argv) > 1 else fn
     with open(input_file, "r") as file:
         lines = [line.rstrip() for line in file.readlines()]
 
